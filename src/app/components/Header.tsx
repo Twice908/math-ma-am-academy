@@ -1,5 +1,6 @@
 import { Menu, X, GraduationCap } from 'lucide-react';
 import { useState } from 'react';
+import logoHB  from '../components/images/logoHB.png';
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -17,12 +18,10 @@ export function Header() {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 w-full">
           {/* Logo */}
-          <div className="flex items-center gap-2 flex-shrink min-w-0">
-            <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-lg flex-shrink-0">
-              <GraduationCap className="w-6 h-6 text-white" />
-            </div>
-            <span className="text-lg sm:text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent truncate">
-              Math ma'am Academy
+
+          <div>
+            <span>
+              <img src={logoHB} alt="Logo" className="h-14 w-auto" />
             </span>
           </div>
 

@@ -1,4 +1,5 @@
-import { GraduationCap, Facebook, Twitter, Instagram, Linkedin, Youtube } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Linkedin, Youtube } from 'lucide-react';
+import logoVW from '../components/images/LogoVW.png';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -9,11 +10,8 @@ export function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-lg">
-                <GraduationCap className="w-6 h-6 text-white" />
-              </div>
-              <span className="text-xl font-bold">Math ma'am Academy</span>
+            <div className="mb-4">
+              <img src={logoVW} alt="Math ma'am Academy" className="h-28 w-auto" />
             </div>
             <p className="text-gray-400 mb-4">
               Empowering students with AI-powered education and modern teaching methods for a brighter future.

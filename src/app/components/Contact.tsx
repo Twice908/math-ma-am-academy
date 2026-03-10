@@ -16,7 +16,7 @@ export function Contact() {
 const handleSubmit = (e: React.FormEvent) => {
   e.preventDefault();
 
-  const phoneNumber = "918080214408"; // replace with your WhatsApp number
+  const phoneNumber = "919011012814"; // replace with your WhatsApp number
 
 const message = `
 New Enrollment Inquiry
