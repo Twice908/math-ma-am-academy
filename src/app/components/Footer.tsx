@@ -80,8 +80,8 @@ export function Footer() {
             </ul>
             <div className="mt-6">
               <h4 className="font-semibold mb-2">Contact</h4>
-              <p className="text-gray-400 text-sm">+91 98765 43210</p>
-              <p className="text-gray-400 text-sm">info@Math ma'am.academy</p>
+              <p className="text-gray-400 text-sm">+91 90110 12814 </p>
+              <p className="text-gray-400 text-sm">mathmaam@gmail.com</p>
             </div>
           </div>
         </div>

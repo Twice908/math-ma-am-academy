@@ -295,11 +295,11 @@ export function Contact() {
                 <div className="min-w-0 flex-1">
                   <div className="font-semibold mb-1">Phone</div>
                   <div className="text-gray-600 text-sm sm:text-base break-words">
-                    +91 98765 43210
+                    +91 90110 12814
                   </div>
-                  <div className="text-gray-600 text-sm sm:text-base break-words">
+                  {/* <div className="text-gray-600 text-sm sm:text-base break-words">
                     +91 98765 43211
-                  </div>
+                  </div> */}
                 </div>
               </div>
 
@@ -310,10 +310,10 @@ export function Contact() {
                 <div className="min-w-0 flex-1">
                   <div className="font-semibold mb-1">Email</div>
                   <div className="text-gray-600 text-sm sm:text-base break-words">
-                    info@futurelearn.academy
+                    mathmaam@gmail.com
                   </div>
                   <div className="text-gray-600 text-sm sm:text-base break-words">
-                    admissions@futurelearn.academy
+                    info.mathmaam@gmail.com
                   </div>
                 </div>
               </div>
@@ -325,9 +325,9 @@ export function Contact() {
                 <div className="min-w-0 flex-1">
                   <div className="font-semibold mb-1">Address</div>
                   <div className="text-gray-600 text-sm sm:text-base">
-                    123 Education Street,
+                    Balaji Residency,
                     <br />
-                    Knowledge Park, City - 400001
+                    Pimple gurav, Pune - 411061
                     <br />
                     Maharashtra, India
                   </div>
@@ -342,17 +342,17 @@ export function Contact() {
               </h3>
               <div className="space-y-3">
                 <div className="flex justify-between gap-2 flex-wrap">
-                  <span className="text-sm sm:text-base">Monday - Friday:</span>
+                  <span className="text-sm sm:text-base">Weekdays :</span>
                   <span className="font-semibold text-sm sm:text-base">
-                    4:00 PM - 9:00 PM
+                    8:00 AM - 7:00 PM
                   </span>
                 </div>
                 <div className="flex justify-between gap-2 flex-wrap">
                   <span className="text-sm sm:text-base">
-                    Saturday - Sunday:
+                    Weekends :
                   </span>
                   <span className="font-semibold text-sm sm:text-base">
-                    9:00 AM - 9:00 PM
+                    10:00 AM - 4:00 PM
                   </span>
                 </div>
                 <div className="pt-3 border-t border-white/20">
