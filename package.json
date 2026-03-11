@@ -2,6 +2,7 @@
   "name": "@figma/my-make-file",
   "private": true,
   "version": "0.0.1",
+  "homepage": "https://mathmaam.com",
   "type": "module",
   "scripts": {
     "build": "vite build",
