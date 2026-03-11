@@ -75,7 +75,7 @@ export function Hero() {
             </div>
             
             <div className="absolute top-2 right-2 md:-top-6 md:-right-6 bg-white p-3 md:p-4 rounded-2xl shadow-xl">
-              <div className="text-xl md:text-2xl font-bold text-purple-600">50+</div>
+              <div className="text-xl md:text-2xl font-bold text-purple-600">10+</div>
               <div className="text-xs md:text-sm text-gray-600">Expert Teachers</div>
             </div>
           </div>

@@ -16,7 +16,7 @@ export function Stats() {
     },
     {
       icon: BookOpen,
-      number: '50+',
+      number: '10+',
       label: 'Expert Teachers',
       gradient: 'from-pink-600 to-rose-600',
     },

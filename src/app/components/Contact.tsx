@@ -249,7 +249,7 @@ export function Contact() {
                   onChange={handleChange}
                   rows={4}
                   className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent resize-none"
-                  placeholder="Any specific requirements or questions..."
+                  placeholder="Please Enter your previous year's marks, and specify any weak subjects or specific areas you want to focus on. This will help us tailor our teaching approach to best suit your needs."
                 ></textarea>
               </div>
 
