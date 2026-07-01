@@ -310,10 +310,10 @@ export function Contact() {
                 <div className="min-w-0 flex-1">
                   <div className="font-semibold mb-1">Email</div>
                   <div className="text-gray-600 text-sm sm:text-base break-words">
-                    mathmaam@gmail.com
+                    mathmaamacademy@gmail.com
                   </div>
                   <div className="text-gray-600 text-sm sm:text-base break-words">
-                    info.mathmaam@gmail.com
+                    mathmaamacademy@gmail.com
                   </div>
                 </div>
               </div>
@@ -352,7 +352,7 @@ export function Contact() {
                     Weekends :
                   </span>
                   <span className="font-semibold text-sm sm:text-base">
-                    10:00 AM - 4:00 PM
+                    8:00 AM - 6:00 PM
                   </span>
                 </div>
                 <div className="pt-3 border-t border-white/20">

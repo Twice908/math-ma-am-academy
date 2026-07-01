@@ -5,7 +5,7 @@ export function SpecialBatches() {
     {
       icon: Trophy,
       title: 'Scholarship Exams',
-      standards: '5th & 8th Standard',
+      standards: '4th & 7th Standard',
       description: 'Specialized coaching for scholarship examinations with proven success rate.',
       features: [
         'Comprehensive syllabus coverage',
@@ -19,7 +19,7 @@ export function SpecialBatches() {
     {
       icon: Star,
       title: 'Olympiad Preparation',
-      standards: 'All Standards (1st - 12th)',
+      standards: 'All Standards (1st - 10th)',
       description: 'Master olympiad exams in Mathematics, Science, English, and more.',
       features: [
         'Subject-wise olympiad coaching',

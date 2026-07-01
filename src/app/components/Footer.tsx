@@ -81,7 +81,7 @@ export function Footer() {
             <div className="mt-6">
               <h4 className="font-semibold mb-2">Contact</h4>
               <p className="text-gray-400 text-sm">+91 90110 12814 </p>
-              <p className="text-gray-400 text-sm">mathmaam@gmail.com</p>
+              <p className="text-gray-400 text-sm">mathmaamacademy@gmail.com</p>
             </div>
           </div>
         </div>
