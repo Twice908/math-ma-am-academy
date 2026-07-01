@@ -20,11 +20,11 @@ export function Hero() {
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              The Future of{' '}
+              Where Every{' '}
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Education
+                Subject
               </span>{' '}
-              Starts Here
+              Clicks
             </h1>
             
             <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
