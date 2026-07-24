@@ -13,6 +13,10 @@ export function Header() {
     }
   };
 
+  const goToTests = () => {
+    window.open('https://twice908.github.io/Homi-Bhabha-Tests/', '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50 overflow-x-hidden">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -68,6 +72,9 @@ export function Header() {
               </button>
               <button onClick={() => scrollToSection('languages')} className="text-gray-700 hover:text-blue-600 transition-colors text-left">
                 Languages
+              </button>
+              <button onClick={goToTests} className="text-gray-700 hover:text-blue-600 transition-colors text-left">
+                Tests
               </button>
               <button onClick={() => scrollToSection('contact')} className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full hover:shadow-lg transition-shadow">
                 Enroll Now
