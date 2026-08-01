@@ -14,7 +14,7 @@ export function Header() {
   };
 
   const goToTests = () => {
-    window.open('https://twice908.github.io/Homi-Bhabha-Tests/', '_blank', 'noopener,noreferrer');
+    window.open('https://twice908.github.io/Homi-Bhabha-Tests/login.html', '_blank', 'noopener,noreferrer');
   };
 
   return (
