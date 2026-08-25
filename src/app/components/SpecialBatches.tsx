@@ -1,4 +1,5 @@
-import { Trophy, Award, Star, CheckCircle } from 'lucide-react';
+import { Trophy, Star, CheckCircle2 } from 'lucide-react';
+import { motion } from 'motion/react';
 
 export function SpecialBatches() {
   const batches = [
@@ -6,29 +7,25 @@ export function SpecialBatches() {
       icon: Trophy,
       title: 'Scholarship Exams',
       standards: '4th & 7th Standard',
-      description: 'Specialized coaching for scholarship examinations with proven success rate.',
+      description: 'Focused coaching for scholarship examinations, built around the actual exam pattern.',
       features: [
-        'Comprehensive syllabus coverage',
-        'Previous year question papers',
-        'Mock tests and practice sessions',
-        'Expert guidance and strategies',
+        'Full syllabus coverage',
+        'Previous years\' question papers',
+        'Timed mock tests',
+        'Exam strategy sessions',
       ],
-      gradient: 'from-amber-500 to-orange-500',
-      bgGradient: 'from-amber-50 to-orange-50',
     },
     {
       icon: Star,
       title: 'Olympiad Preparation',
-      standards: 'All Standards (1st - 10th)',
-      description: 'Master olympiad exams in Mathematics, Science, English, and more.',
+      standards: 'Standards 1–10',
+      description: 'Structured preparation for Mathematics, Science, English, and more.',
       features: [
         'Subject-wise olympiad coaching',
-        'Advanced problem-solving techniques',
-        'International level preparation',
-        'Regular competitive assessments',
+        'Advanced problem-solving practice',
+        'International-level question sets',
+        'Regular timed assessments',
       ],
-      gradient: 'from-purple-500 to-pink-500',
-      bgGradient: 'from-purple-50 to-pink-50',
     },
   ];
 
@@ -42,105 +39,100 @@ export function SpecialBatches() {
   ];
 
   return (
-    <section id="special-batches" className="py-16 md:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white px-4 py-2 rounded-full mb-4">
-            <Award className="w-4 h-4" />
-            <span className="text-sm font-medium">Exclusive Programs</span>
+    <section id="special-batches" className="py-20 md:py-28 bg-white">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 bg-[#f5f5f7] px-4 py-1.5 rounded-full mb-5">
+            <span className="text-sm text-[#1d1d1f]/70">Exclusive Programs</span>
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-            Special{' '}
-            <span className="bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
-              Exam Batches
-            </span>
+          <h2 className="text-3xl md:text-5xl font-semibold tracking-[-0.02em] mb-4 text-[#1d1d1f]">
+            Special exam batches
           </h2>
-          <p className="text-lg text-gray-600">
-            Specialized coaching for competitive exams to help students excel and achieve their dreams.
+          <p className="text-lg md:text-xl text-[#6e6e73]">
+            Dedicated coaching for the exams that open doors — run separately from regular coursework.
           </p>
         </div>
 
-        {/* Batches Grid */}
-        <div className="grid lg:grid-cols-2 gap-8 mb-16">
+        <div className="grid lg:grid-cols-2 gap-5 mb-6">
           {batches.map((batch, index) => {
             const Icon = batch.icon;
             return (
-              <div
-                key={index}
-                className="bg-white border-2 border-gray-200 rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+              <motion.div
+                key={batch.title}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ type: 'spring', bounce: 0, duration: 0.5, delay: index * 0.08 }}
+                whileHover={{ y: -4 }}
+                className="bg-[#f5f5f7] rounded-3xl p-8 md:p-9"
               >
-                {/* Header */}
-                <div className={`bg-gradient-to-r ${batch.gradient} p-8 text-white`}>
-                  <div className="flex items-start gap-4">
-                    <div className="bg-white/20 backdrop-blur-sm p-4 rounded-2xl">
-                      <Icon className="w-8 h-8" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-2xl md:text-3xl font-bold mb-2">{batch.title}</h3>
-                      <p className="text-white/90 text-lg">{batch.standards}</p>
-                    </div>
+                <div className="flex items-start gap-4 mb-6">
+                  <div className="bg-white p-3.5 rounded-2xl shadow-sm">
+                    <Icon className="w-7 h-7 text-[#0071e3]" strokeWidth={1.75} />
+                  </div>
+                  <div>
+                    <h3 className="text-xl md:text-2xl font-semibold text-[#1d1d1f]">{batch.title}</h3>
+                    <p className="text-[#6e6e73]">{batch.standards}</p>
                   </div>
                 </div>
 
-                {/* Content */}
-                <div className="p-8">
-                  <p className="text-gray-600 mb-6 leading-relaxed">{batch.description}</p>
-                  
-                  <div className="space-y-3">
-                    {batch.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-start gap-3">
-                        <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-700">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
+                <p className="text-[#6e6e73] mb-6 leading-relaxed">{batch.description}</p>
+
+                <div className="space-y-3">
+                  {batch.features.map((feature) => (
+                    <div key={feature} className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-[#0071e3] flex-shrink-0 mt-0.5" strokeWidth={1.75} />
+                      <span className="text-[#1d1d1f]/80 text-[15px]">{feature}</span>
+                    </div>
+                  ))}
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
 
-        {/* Olympiad Subjects & Success Story */}
-        <div className="grid lg:grid-cols-2 gap-8">
-          {/* Olympiad Subjects */}
-          <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-3xl p-8">
-            <h3 className="text-2xl font-bold mb-6">Olympiad Subjects Covered</h3>
+        {/* Olympiad Subjects & Success Rate */}
+        <div className="grid lg:grid-cols-2 gap-5">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ type: 'spring', bounce: 0, duration: 0.5 }}
+            className="bg-[#f5f5f7] rounded-3xl p-8"
+          >
+            <h3 className="text-xl font-semibold mb-6 text-[#1d1d1f]">Olympiad subjects covered</h3>
             <div className="grid grid-cols-2 gap-3">
-              {olympiadSubjects.map((subject, index) => (
+              {olympiadSubjects.map((subject) => (
                 <div
-                  key={index}
-                  className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow"
+                  key={subject}
+                  className="bg-white p-4 rounded-xl shadow-sm"
                 >
                   <div className="flex items-center gap-2">
-                    <Star className="w-4 h-4 text-purple-600" />
-                    <span className="text-sm font-medium text-gray-700">{subject}</span>
+                    <Star className="w-4 h-4 text-[#0071e3]" strokeWidth={1.75} />
+                    <span className="text-sm font-medium text-[#1d1d1f]/80">{subject}</span>
                   </div>
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
-          {/* Success Story */}
-          <div className="relative rounded-3xl overflow-hidden">
-            <img
-              src="https://images.unsplash.com/photo-1660795468951-0b37051eb1b2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdHVkZW50JTIwYXdhcmQlMjBleGFtJTIwc3VjY2Vzc3xlbnwxfHx8fDE3NzIwODMwNzl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-              alt="Student success and awards"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end">
-              <div className="p-8 text-white">
-                <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-3">
-                  <Trophy className="w-4 h-4" />
-                  <span className="text-sm">Success Stories</span>
-                </div>
-                <h3 className="text-2xl font-bold mb-2">95% Success Rate</h3>
-                <p className="text-white/90">
-                  Our students consistently rank among the top performers in scholarship and olympiad exams.
-                </p>
-              </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ type: 'spring', bounce: 0, duration: 0.5, delay: 0.08 }}
+            className="bg-[#1d1d1f] rounded-3xl p-8 flex flex-col justify-center"
+          >
+            <div className="inline-flex items-center gap-2 bg-white/10 text-white/80 px-4 py-1.5 rounded-full mb-5 w-fit">
+              <Trophy className="w-4 h-4" strokeWidth={1.75} />
+              <span className="text-sm">Success Rate</span>
             </div>
-          </div>
+            <div className="text-5xl md:text-6xl font-semibold text-white tracking-[-0.02em] mb-3">95%</div>
+            <p className="text-white/70 leading-relaxed">
+              Our scholarship and olympiad students consistently rank among
+              the top performers in their exam cohorts.
+            </p>
+          </motion.div>
         </div>
       </div>
     </section>
