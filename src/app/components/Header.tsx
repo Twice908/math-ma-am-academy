@@ -10,7 +10,6 @@ const navItems = [
   { id: 'classes', label: 'Classes' },
   { id: 'special-batches', label: 'Special Batches' },
   { id: 'languages', label: 'Languages' },
-  { id: 'tests', label: 'Test Portal' },
 ];
 
 const TESTS_URL = 'https://twice908.github.io/Math-ma-am-test-portal/';
@@ -96,16 +95,16 @@ export function Header() {
               onClick={goToTests}
               className="nav-link px-4 py-2 text-[14.5px] text-white/70 hover:text-white transition-colors inline-flex items-center gap-1"
             >
-              Tests
+              Test Portal
               <ArrowUpRight className="w-3.5 h-3.5 opacity-70" />
             </button>
-            <button
+            {/* <button
               onClick={() => setVrModalOpen(true)}
               className="nav-link px-4 py-2 text-[14.5px] text-cyan/80 hover:text-cyan transition-colors inline-flex items-center gap-1.5"
             >
               <FlaskConical className="w-3.5 h-3.5" />
               VR Lab
-            </button>
+            </button> */}
           </div>
 
           <button
