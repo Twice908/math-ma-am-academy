@@ -1,12 +1,18 @@
 import { Brain, Users, Sparkles, Target, BookOpen, Award } from 'lucide-react';
-import { motion } from 'motion/react';
+import { useRef } from 'react';
+import { useGSAP } from '@gsap/react';
+import { gsap, SplitText } from '../lib/motion';
+import { Eyebrow, h2Class } from './Section';
+import { DiamondRow } from './Operators';
 
 export function Features() {
+  const bannerRef = useRef<HTMLDivElement>(null);
+
   const features = [
     {
       icon: Brain,
-      title: 'AI-Assisted Learning',
-      description: 'Practice sets and progress tracking adapt to each student, so revision time goes where it matters most.',
+      title: 'AI-Informed Teaching',
+      description: "Teachers use AI insights to identify gaps and tailor instruction — keeping every student's growth on track without replacing the human touch.",
     },
     {
       icon: Users,
@@ -35,57 +41,125 @@ export function Features() {
     },
   ];
 
+  // The AI statement lights up word by word as it scrolls through the viewport.
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+      mm.add('(prefers-reduced-motion: no-preference)', () => {
+        const split = SplitText.create('[data-scrub-text]', { type: 'words' });
+        gsap.fromTo(
+          split.words,
+          { opacity: 0.16 },
+          {
+            opacity: 1,
+            stagger: 0.1,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: '[data-scrub-text]',
+              start: 'top 85%',
+              end: 'bottom 50%',
+              scrub: true,
+            },
+          },
+        );
+        return () => split.revert();
+      });
+    },
+    { scope: bannerRef },
+  );
+
   return (
-    <section id="features" className="py-20 md:py-28 bg-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-5xl font-semibold tracking-[-0.02em] mb-4 text-[#1d1d1f]">
-            Why families choose Math ma'am Academy
-          </h2>
-          <p className="text-lg md:text-xl text-[#6e6e73]">
-            The blend of attentive teaching and smart tools that gets results.
-          </p>
+    <section id="features" className="relative bg-paper py-24 md:py-36">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
+          {/* Sticky intro */}
+          <div className="lg:col-span-5">
+            <div className="lg:sticky lg:top-32">
+              <Eyebrow>Why Us</Eyebrow>
+              <h2 data-split className={`${h2Class} mt-6 text-ink`}>
+                Why families choose{' '}
+                <span className="font-serif-i text-grad">Math ma'am</span> Academy
+              </h2>
+              <p data-reveal className="mt-6 text-lg md:text-xl text-slate-ink max-w-md leading-relaxed">
+                The blend of attentive teaching and smart tools that gets results.
+              </p>
+              <DiamondRow size={14} className="mt-10 hidden lg:inline-flex" />
+            </div>
+          </div>
+
+          {/* Feature list */}
+          <div className="lg:col-span-7">
+            <ol className="border-t border-ink/12">
+              {features.map((feature, index) => {
+                const Icon = feature.icon;
+                return (
+                  <li
+                    key={feature.title}
+                    data-reveal
+                    className="group relative border-b border-ink/12 py-7 md:py-9 grid grid-cols-[auto_1fr] gap-5 md:gap-8"
+                  >
+                    <span
+                      aria-hidden
+                      className="absolute left-0 bottom-[-1px] h-px w-full bg-grad origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                    />
+                    <div className="flex flex-col items-center gap-4 pt-1">
+                      <span className="text-xs tabular-nums text-ink/40 font-medium">
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                      <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white border border-ink/10 grid place-items-center shadow-[0_8px_24px_-12px_rgba(12,10,29,0.25)] transition-all duration-500 group-hover:bg-ink group-hover:border-ink group-hover:-rotate-6">
+                        <Icon
+                          className="w-5 h-5 md:w-6 md:h-6 text-violet transition-colors duration-500 group-hover:text-cyan"
+                          strokeWidth={1.75}
+                        />
+                      </div>
+                    </div>
+                    <div className="md:pt-6">
+                      <h3 className="font-display text-2xl md:text-[1.9rem] font-semibold tracking-[-0.025em] text-ink transition-transform duration-500 group-hover:translate-x-1">
+                        {feature.title}
+                      </h3>
+                      <p className="mt-2.5 text-slate-ink leading-relaxed text-[15.5px] md:text-base max-w-lg">
+                        {feature.description}
+                      </p>
+                    </div>
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {features.map((feature, index) => {
-            const Icon = feature.icon;
-            return (
-              <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-60px' }}
-                transition={{ type: 'spring', bounce: 0, duration: 0.5, delay: (index % 3) * 0.06 }}
-                whileHover={{ y: -4 }}
-                className="bg-[#f5f5f7] rounded-2xl p-7 hover:bg-[#eef0f3] transition-colors"
-              >
-                <div className="inline-flex p-3 rounded-xl bg-white shadow-sm mb-5">
-                  <Icon className="w-5 h-5 text-[#0071e3]" strokeWidth={1.75} />
-                </div>
-                <h3 className="text-lg font-semibold mb-2 text-[#1d1d1f]">{feature.title}</h3>
-                <p className="text-[#6e6e73] leading-relaxed text-[15px]">{feature.description}</p>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        {/* Bottom Banner */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ type: 'spring', bounce: 0, duration: 0.6 }}
-          className="mt-6 bg-[#1d1d1f] rounded-3xl p-10 md:p-14 text-white text-center"
+        {/* AI statement */}
+        <div
+          ref={bannerRef}
+          data-reveal
+          className="relative mt-24 md:mt-32 rounded-[2rem] md:rounded-[2.5rem] bg-ink text-white overflow-hidden grain"
         >
-          <h3 className="text-2xl md:text-4xl font-semibold tracking-[-0.02em] mb-4">
-            Teaching, sharpened by AI — never replaced by it.
-          </h3>
-          <p className="text-lg text-white/70 max-w-2xl mx-auto leading-relaxed">
-            Our platform flags each student's weak areas and adjusts practice
-            accordingly, so teachers spend their time where it counts: with the student.
-          </p>
-        </motion.div>
+          <div aria-hidden className="absolute inset-0 grid-dark opacity-70" />
+          <div
+            aria-hidden
+            data-parallax="0.4"
+            className="absolute -right-32 -top-32 w-[30rem] h-[30rem] rounded-full bg-violet/35 blur-[120px]"
+          />
+          <div
+            aria-hidden
+            className="absolute -left-24 -bottom-40 w-[26rem] h-[26rem] rounded-full bg-magenta/20 blur-[120px]"
+          />
+          <div className="relative px-7 py-14 sm:px-12 md:px-20 md:py-24 max-w-5xl">
+            <DiamondRow size={12} className="mb-8" />
+            <h3 className="font-display font-semibold text-[clamp(2rem,4.6vw,4rem)] leading-[1] tracking-[-0.04em]">
+              Teaching, guided by <span className="font-serif-i text-grad pr-1">insight</span> — driven
+              by dedication.
+            </h3>
+            <p
+              data-scrub-text
+              className="mt-8 text-xl md:text-[1.75rem] leading-[1.45] text-white max-w-3xl tracking-[-0.01em]"
+            >
+              Our teachers use modern AI tools to understand each student's learning gaps and
+              tailor their approach accordingly — because real growth happens person to person,
+              not through an app.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );

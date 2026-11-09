@@ -1,0 +1,297 @@
+/* ───────────────────────── Brand tokens ───────────────────────── */
+@theme {
+  --color-ink: #0c0a1d;
+  --color-ink-2: #15122b;
+  --color-paper: #f5f2ec;
+  --color-paper-2: #ebe5da;
+  --color-magenta: #d65be0;
+  --color-violet: #8e5be3;
+  --color-cyan: #5fd8f2;
+  --color-slate-ink: #5c586d;
+
+  --font-display: 'Bricolage Grotesque Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Instrument Serif', ui-serif, Georgia, serif;
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+:root {
+  --grad: linear-gradient(100deg, #d65be0 0%, #8e5be3 50%, #5fd8f2 100%);
+  --grad-btn: linear-gradient(100deg, #c84ad3 0%, #7c49dc 50%, #c84ad3 100%);
+}
+
+html {
+  background: var(--color-ink);
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: #8e5be3;
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid #8e5be3;
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+@layer components {
+/* ───────────────────────── Utilities ───────────────────────── */
+.text-grad {
+  background-image: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bg-grad {
+  background-image: var(--grad);
+}
+
+.font-serif-i {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+/* Notebook grid, faded at the edges */
+.grid-dark {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 20%, transparent 75%);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 20%, transparent 75%);
+}
+
+.grid-light {
+  background-image:
+    linear-gradient(rgba(12, 10, 29, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(12, 10, 29, 0.05) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(ellipse 60% 70% at 50% 50%, #000 10%, transparent 70%);
+  mask-image: radial-gradient(ellipse 60% 70% at 50% 50%, #000 10%, transparent 70%);
+}
+
+/* Film grain for depth on dark surfaces */
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ───────────────────────── Buttons ───────────────────────── */
+.btn-primary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  color: #fff;
+  font-weight: 600;
+  background-image: var(--grad-btn);
+  background-size: 200% 100%;
+  background-position: 0% 50%;
+  box-shadow:
+    0 10px 30px -10px rgba(142, 91, 227, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  transition:
+    background-position 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease,
+    transform 0.2s ease;
+}
+.btn-primary:hover {
+  background-position: 100% 50%;
+  box-shadow:
+    0 16px 40px -10px rgba(214, 91, 224, 0.75),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+.btn-primary:active {
+  transform: scale(0.97);
+}
+.btn-primary .btn-arrow {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.btn-primary:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+.btn-ghost:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+/* Nav underline */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 0.35rem;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ───────────────────────── Cards ───────────────────────── */
+/* Cursor-following glow, set via --mx / --my from App */
+.spotlight {
+  position: relative;
+  isolation: isolate;
+}
+.spotlight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  background: radial-gradient(
+    420px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(142, 91, 227, 0.16),
+    transparent 60%
+  );
+}
+.spotlight-dark::before {
+  background: radial-gradient(
+    420px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(214, 91, 224, 0.18),
+    transparent 60%
+  );
+}
+.spotlight:hover::before {
+  opacity: 1;
+}
+
+.lift {
+  transition:
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.4s ease;
+}
+.lift:hover {
+  transform: translateY(-6px);
+}
+
+/* Gradient hairline border */
+.grad-border {
+  position: relative;
+}
+.grad-border::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--grad);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+.grad-border:hover::after,
+.grad-border.is-on::after {
+  opacity: 1;
+}
+
+/* ───────────────────────── Text effects ───────────────────────── */
+/* Leave room for descenders inside SplitText line masks */
+.split-line-mask,
+[data-split] > div {
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+.outline-text {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(12, 10, 29, 0.22);
+}
+
+/* ───────────────────────── Form ───────────────────────── */
+.field {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid rgba(12, 10, 29, 0.12);
+  background: #fff;
+  padding: 0.85rem 1rem;
+  font-size: 15px;
+  color: var(--color-ink);
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.field::placeholder {
+  color: rgba(12, 10, 29, 0.38);
+}
+.field:hover {
+  border-color: rgba(12, 10, 29, 0.25);
+}
+.field:focus {
+  outline: none;
+  border-color: #8e5be3;
+  box-shadow: 0 0 0 4px rgba(142, 91, 227, 0.15);
+}
+select.field {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+select.field:invalid {
+  color: rgba(12, 10, 29, 0.45);
+}
+
+/* ───────────────────────── Marquee ───────────────────────── */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
