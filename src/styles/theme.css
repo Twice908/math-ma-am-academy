@@ -2,8 +2,8 @@
 
 :root {
   --font-size: 16px;
-  --background: #ffffff;
-  --foreground: #1d1d1f;
+  --background: #f5f2ec;
+  --foreground: #0c0a1d;
   --card: #ffffff;
   --card-foreground: #1d1d1f;
   --popover: #ffffff;
@@ -140,8 +140,7 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
-      "Segoe UI", system-ui, sans-serif;
+    font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
 
